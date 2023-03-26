@@ -1,0 +1,24 @@
+name: Show olimage help
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes qemu-user-static
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          path: ultimainsailos
+
+      - name: Show Help
+        shell: bash
+        run: |
+          cd ultimainsailos/olimage
+          python3 -m olimage --help
