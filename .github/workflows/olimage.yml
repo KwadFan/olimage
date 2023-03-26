@@ -20,5 +20,5 @@ jobs:
       - name: Show Help
         shell: bash
         run: |
-          cd ultimainsailos/olimage
+          cd ultimainsailos
           python3 -m olimage --help
