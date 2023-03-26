@@ -29,5 +29,5 @@ jobs:
       - name: Build Image
         shell: bash
         run: |
-        cd ultimainsailos
-        run.sh -v image A20-OLinuXino bullseye base A20-OLinuXino-bullseye-base-$(date +%Y%m%d-%H%M%S).img
+          cd ultimainsailos
+          run.sh -v image A20-OLinuXino bullseye base A20-OLinuXino-bullseye-base-$(date +%Y%m%d-%H%M%S).img
