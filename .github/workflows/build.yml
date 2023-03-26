@@ -61,7 +61,7 @@ jobs:
           cd ultimainsailos/output/a20-olinuxino/images
           ls -al
 
-        - name: Upload Compressed Image
+      - name: Upload Compressed Image
         uses: actions/upload-artifact@v3
         with:
           path: |
