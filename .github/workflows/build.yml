@@ -42,12 +42,15 @@ jobs:
           cd ultimainsailos/output/a20-olinuxino/images
           ls -al
 
-      - name: Compress Image
+      - name: Rename and Compress Image
         shell: bash
         run: |
+          NOW="$(date +%Y%m%d-%H%M%S)"
+          cd ultimainsailos/output/a20-olinuxino/images
+          cp A20-OLinuXino-bullseye-minimal*.img ultimainsailos-bullseye-A20-${NOW}.img
           CPU_COUNT="$(nproc)"
           echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
-          xz -efkvz9T"${CPU_COUNT}" A20-OLinuXino-bullseye-minimal*.img || true
+          xz -efkvz9T"${CPU_COUNT}" ultimainsailos-bullseye-A20-${NOW}.img || true
 
       - name: DEBUG - Show compressed images
         shell: bash
