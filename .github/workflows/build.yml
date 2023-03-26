@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
@@ -21,10 +21,6 @@ jobs:
         with:
           path: ultimainsailos
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: Build Image
         shell: bash
         run: |
@@ -32,3 +28,9 @@ jobs:
           ls -al
           chmod +x *.sh
           ./build-a20.sh
+
+      - name: DEBUG
+        shell: bash
+        run: |
+          cd output//a20-olinuxino/images
+          ls -al
