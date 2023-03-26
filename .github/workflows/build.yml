@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        path: repo
+        with:
+          path: repo
 
       - name: DEBUG
         shell: bash
