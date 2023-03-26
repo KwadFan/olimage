@@ -12,3 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        path: repo
+
+      - name: DEBUG
+        shell: bash
+        run: |
+          ls -al
