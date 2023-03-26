@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
@@ -21,11 +21,10 @@ jobs:
         with:
           path: ultimainsailos
 
-      - name: DEBUG
-        shell: bash
-        run: |
-          ls -al
-
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Build Image
         shell: bash
         run: |
