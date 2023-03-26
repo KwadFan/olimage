@@ -1,4 +1,4 @@
-name: Build MainsailOS
+name: Build UltimainsailOS
 on:
   push:
     branches:
