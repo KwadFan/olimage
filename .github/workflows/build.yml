@@ -46,6 +46,9 @@ jobs:
         shell: bash
         run: |
           NOW="$(date +%Y%m%d-%H%M%S)"
+          WORKSPACE=$(echo ${{ github.workspace }})
+          sudo chown -R $USER:$USER $WORKSPACE/ultimainsailos/output/a20-olinuxino/images || true
+          sudo chmod 0775 -R $WORKSPACE/ultimainsailos/output/a20-olinuxino/images || true
           cd ultimainsailos/output/a20-olinuxino/images
           cp A20-OLinuXino-bullseye-minimal*.img ultimainsailos-bullseye-A20-${NOW}.img
           CPU_COUNT="$(nproc)"
