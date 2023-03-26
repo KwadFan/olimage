@@ -6,6 +6,11 @@ on:
 
   workflow_dispatch:
 
+# Allow to stop obsolete workflows
+concurrency:
+  group: ci-buildtrain-${{ github.ref }}-1
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,5 +37,5 @@ jobs:
       - name: DEBUG
         shell: bash
         run: |
-          cd output//a20-olinuxino/images
+          cd output/a20-olinuxino/images
           ls -al
