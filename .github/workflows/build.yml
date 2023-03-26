@@ -30,4 +30,5 @@ jobs:
         shell: bash
         run: |
           cd ultimainsailos
-          run.sh -v image A20-OLinuXino bullseye base A20-OLinuXino-bullseye-base-$(date +%Y%m%d-%H%M%S).img
+          ls -al
+          ./run.sh -v image A20-OLinuXino bullseye base A20-OLinuXino-bullseye-base-$(date +%Y%m%d-%H%M%S).img
