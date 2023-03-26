@@ -36,7 +36,20 @@ jobs:
           chmod +x *.sh
           ./build-a20.sh
 
-      - name: DEBUG
+      - name: DEBUG - Show output
+        shell: bash
+        run: |
+          cd ultimainsailos/output/a20-olinuxino/images
+          ls -al
+
+      - name: Compress Image
+        shell: bash
+        run: |
+          CPU_COUNT="$(nproc)"
+          echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
+          xz -efkvz9T"${CPU_COUNT}" A20-OLinuXino-bullseye-minimal*.img || true
+
+      - name: DEBUG - Show compressed images
         shell: bash
         run: |
           cd ultimainsailos/output/a20-olinuxino/images
