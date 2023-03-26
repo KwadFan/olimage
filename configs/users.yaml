@@ -1,9 +1,21 @@
 users:
-  root:
-    password: 'olimex'
-#    permit_login: yes
-#    force_change: yes
+    root:
+        password: "olimex"
+    #    permit_login: yes
+    #    force_change: yes
 
-  olimex:
-    password: 'olimex'
-    groups: [ 'adm', 'audio', 'cdrom', 'dialout', 'games', 'netdev', 'plugdev', 'sudo', 'video', 'users' ]
+    um:
+        password: "um"
+        groups:
+            [
+                "adm",
+                "audio",
+                "cdrom",
+                "dialout",
+                "games",
+                "netdev",
+                "plugdev",
+                "sudo",
+                "video",
+                "users",
+            ]
