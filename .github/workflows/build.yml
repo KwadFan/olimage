@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
@@ -19,9 +19,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          path: repo
+          path: ultimainsailos
 
       - name: DEBUG
         shell: bash
         run: |
           ls -al
+
+      - name: Build Image
+        shell: bash
+        run: |
+        cd ultimainsailos
+        run.sh -v image A20-OLinuXino bullseye base A20-OLinuXino-bullseye-base-$(date +%Y%m%d-%H%M%S).img
