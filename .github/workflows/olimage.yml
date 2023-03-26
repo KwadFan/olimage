@@ -21,4 +21,5 @@ jobs:
         shell: bash
         run: |
           cd ultimainsailos
+          pip3 install halo pinject
           python3 -m olimage --help
