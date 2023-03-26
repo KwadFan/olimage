@@ -37,5 +37,5 @@ jobs:
       - name: DEBUG
         shell: bash
         run: |
-          cd output/a20-olinuxino/images
+          cd ultimainsailos/output/a20-olinuxino/images
           ls -al

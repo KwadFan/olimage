@@ -11,4 +11,4 @@ bash run_headless.sh -v image A20-OLinuXino bullseye minimal    A20-OLinuXino-bu
 # release images
 
 # a20
-ARGS=-r bash run_headless.sh -v image A20-OLinuXino bullseye minimal    A20-OLinuXino-bullseye-minimal-$(date +%Y%m%d-%H%M%S).img
+ARGS=-v --log --ssh -r bash run_headless.sh -v image A20-OLinuXino bullseye minimal    A20-OLinuXino-bullseye-minimal-$(date +%Y%m%d-%H%M%S).img
