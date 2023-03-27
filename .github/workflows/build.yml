@@ -50,7 +50,7 @@ jobs:
           sudo chown -R $USER:$USER $WORKSPACE/ultimainsailos/output/a20-olinuxino/images || true
           sudo chmod 0775 -R $WORKSPACE/ultimainsailos/output/a20-olinuxino/images || true
           cd ultimainsailos/output/a20-olinuxino/images
-          cp A20-OLinuXino-bullseye-minimal*.img ultimainsailos-bullseye-A20-${NOW}.img
+          cp ultimainsailos-bullseye-A20*.img ultimainsailos-bullseye-A20-${NOW}.img
           CPU_COUNT="$(nproc)"
           echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
           xz -efkvz9T"${CPU_COUNT}" ultimainsailos-bullseye-A20-${NOW}.img || true
@@ -64,5 +64,6 @@ jobs:
       - name: Upload Compressed Image
         uses: actions/upload-artifact@v3
         with:
+          name: ultimainsailos
           path: |
             ultimainsailos/output/a20-olinuxino/images/*.img.xz
