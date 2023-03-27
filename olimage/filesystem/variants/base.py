@@ -66,6 +66,15 @@ class VariantBase(FileSystemBase):
                 )
             )
 
+        with Console("TEST ENTRY"):
+            Utils.shell.run("echo Hello World")
+
+        with Console("Grant sudo without password for user 'um'"):
+            Utils.install("/etc/sudoers.d/010_um-nopasswd")
+
+        with Console("Who am I ?"):
+            Utils.shell.chroot("sudo -u um whoami")
+
     @stamp
     @export(final=True)
     @prepare
