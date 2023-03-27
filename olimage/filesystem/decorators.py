@@ -21,19 +21,23 @@ def export(*args, **kwargs):
             # Run function
             ret = func(*args, **kwargs)
 
-            file = env.paths['build'] + '.' + func.__name__ + '.tar.gz'
+            file = env.paths["build"] + "." + func.__name__ + ".tar.gz"
 
             with Console("Creating archive: {}".format(os.path.basename(file))):
-                Utils.archive.gzip(env.paths['build'], file,
-                                   exclude=['/dev/*', '/proc/*', '/run/*', '/tmp/*', '/sys/*'])
+                Utils.archive.gzip(
+                    env.paths["build"],
+                    file,
+                    exclude=["/dev/*", "/proc/*", "/run/*", "/tmp/*", "/sys/*"],
+                )
 
             return ret
 
         return wrapper
     else:
         final = False
-        if 'final' in kwargs and kwargs['final']:
+        if "final" in kwargs and kwargs["final"]:
             final = True
+
         def _wrapper(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
@@ -41,17 +45,21 @@ def export(*args, **kwargs):
                 ret = func(*args, **kwargs)
 
                 if final:
-                    file = env.paths['build'] + '.tar.gz'
+                    file = env.paths["build"] + ".tar.gz"
                 else:
-                    file = env.paths['build'] + '.' + func.__name__ + '.tar.gz'
+                    file = env.paths["build"] + "." + func.__name__ + ".tar.gz"
 
                 with Console("Creating archive: {}".format(os.path.basename(file))):
-                    Utils.archive.gzip(env.paths['build'], file,
-                                       exclude=['/dev/*', '/proc/*', '/run/*', '/tmp/*', '/sys/*'])
+                    Utils.archive.gzip(
+                        env.paths["build"],
+                        file,
+                        exclude=["/dev/*", "/proc/*", "/run/*", "/tmp/*", "/sys/*"],
+                    )
 
                 return ret
 
             return wrapper
+
         return _wrapper
 
 
@@ -75,14 +83,14 @@ def prepare(func):
 
         # If this is the first stage, there is nothing to extract
         if index != 0:
-            file = fs.build_dir + '.' + fs.stages[index - 1] + '.tar.gz'
+            file = fs.build_dir + "." + fs.stages[index - 1] + ".tar.gz"
         else:
-            variants = ['minimal', 'base']
+            variants = ["minimal", "mainsailos", "base"]
             _index = variants.index(fs.variant)
 
             if _index:
-                file = fs.build_dir + '.tar.gz'
-                file = file.replace(fs.variant, variants[_index -1])
+                file = fs.build_dir + ".tar.gz"
+                file = file.replace(fs.variant, variants[_index - 1])
 
         if file:
             with Console("Extracting archive: {}".format(os.path.basename(file))):
@@ -103,17 +111,20 @@ def stamp(func):
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-
         fs: FileSystemBase = args[0]
 
         # Check if the environment keys are set
-        for key in ['filesystem', 'build']:
+        for key in ["filesystem", "build"]:
             if key not in env.paths:
-                raise Exception("The path \'{}\' not set in the global environment".format(key))
+                raise Exception(
+                    "The path '{}' not set in the global environment".format(key)
+                )
 
         # Generate stamp for the exact filesystem: .stamp_<suite>-<variant>_<function>
         file = os.path.join(
-            env.paths['filesystem'], '.stamp-' + os.path.basename(env.paths['build']) + '_' + func.__name__)
+            env.paths["filesystem"],
+            ".stamp-" + os.path.basename(env.paths["build"]) + "_" + func.__name__,
+        )
 
         # Check if stamp exists
         if os.path.isfile(file):
@@ -128,9 +139,12 @@ def stamp(func):
                 break
 
         for stage in stages:
-            path = os.path.join(env.paths['filesystem'], '.stamp_' + stage + '_' + os.path.basename(env.paths['build']))
+            path = os.path.join(
+                env.paths["filesystem"],
+                ".stamp_" + stage + "_" + os.path.basename(env.paths["build"]),
+            )
             if os.path.isfile(path):
-                logger.debug('Removing followup stamp: {}'.format(path))
+                logger.debug("Removing followup stamp: {}".format(path))
                 os.remove(path)
 
         # Run function
@@ -140,11 +154,8 @@ def stamp(func):
         logger.debug("Creating stamp: {}".format(file))
         # TODO: Store hash sum for the directory. This way you can check for modifications
         # Probably with: tar -cf - somedir | md5sum
-        open(file, 'x').close()
+        open(file, "x").close()
 
         return ret
 
     return wrapper
-
-
-
