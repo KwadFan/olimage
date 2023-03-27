@@ -12,6 +12,7 @@ releases:
             - firmware-realtek
         base:
             - git
+            - avahi-daemon
 variants:
     minimal:
         description: "Minimal filesystem"
