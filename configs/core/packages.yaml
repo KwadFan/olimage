@@ -10,12 +10,12 @@ releases:
         minimal:
             - firmware-ralink
             - firmware-realtek
-        base:
-            - chromium
-            - mirage
         mainsailos:
             - nginx
             - git
+        base:
+            - chromium
+            - mirage
 
 variants:
     minimal:
