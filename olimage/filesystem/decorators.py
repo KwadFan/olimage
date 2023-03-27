@@ -85,7 +85,7 @@ def prepare(func):
         if index != 0:
             file = fs.build_dir + "." + fs.stages[index - 1] + ".tar.gz"
         else:
-            variants = ["minimal", "mainsailos", "base"]
+            variants = ["minimal", "base"]
             _index = variants.index(fs.variant)
 
             if _index:

@@ -10,9 +10,6 @@ releases:
         minimal:
             - firmware-ralink
             - firmware-realtek
-        mainsailos:
-            - nginx
-            - git
         base:
             - chromium
             - mirage
@@ -65,14 +62,9 @@ variants:
             - wget
             - wireless-regdb
             - wireless-tools
-            - *olimex
-
-    mainsailos:
-        description: "Mainsail filesystem"
-        packages:
             - nmtui
             - python3
-            - avahi-daemon
+            - nginx
             - *olimex
 
     base:
