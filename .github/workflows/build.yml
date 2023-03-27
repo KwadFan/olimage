@@ -40,7 +40,7 @@ jobs:
         shell: bash
         run: |
           cd ultimainsailos/output/a20-olinuxino/images
-          ls -al
+          ls -alh
 
       - name: Rename and Compress Image
         shell: bash
@@ -59,7 +59,7 @@ jobs:
         shell: bash
         run: |
           cd ultimainsailos/output/a20-olinuxino/images
-          ls -al
+          ls -alh
 
       - name: Upload Compressed Image
         uses: actions/upload-artifact@v3

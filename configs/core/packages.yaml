@@ -67,6 +67,7 @@ variants:
         description: "Mainsailos filesystem"
         packages:
             - git
+            - nginx
             - virtualenv
             - python3-dev
             - python3-matplotlib

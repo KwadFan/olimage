@@ -75,6 +75,18 @@ class VariantBase(FileSystemBase):
         with Console("Who am I ?"):
             Utils.shell.chroot("sudo -u um whoami")
 
+        # Nginx configuration
+        with Console("Install Nginx configuration"):
+            Utils.install("/etc/nginx/conf.d/common_vars.conf")
+            Utils.install("/etc/nginx/conf.d/upstreams.conf")
+            Utils.install("/etc/nginx/sites-available/mainsail")
+            Utils.shell.chroot("rm /etc/nginx/sites-enabled/default")
+
+        with Console("Link available site mainsail"):
+            Utils.shell.chroot(
+                "ln -sf /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/"
+            )
+
     @stamp
     @export(final=True)
     @prepare
