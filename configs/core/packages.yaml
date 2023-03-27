@@ -13,6 +13,9 @@ releases:
         base:
             - chromium
             - mirage
+        mainsailos:
+            - nginx
+            - git
 
 variants:
     minimal:
@@ -221,4 +224,5 @@ variants:
             - wireless-regdb
             - wireless-tools
             - nmtui
+            - python3
             - *olimex
