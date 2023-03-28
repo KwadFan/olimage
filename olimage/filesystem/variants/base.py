@@ -87,6 +87,18 @@ class VariantBase(FileSystemBase):
                 "ln -sf /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/"
             )
 
+        with Console("Modify nginx logrotate cycle (14d -> 2d) ..."):
+            Utils.shell.chroot("sed -i 's/rotate 14/rotate 2/' /etc/logrotate.d/nginx")
+
+        with Console("Enable nginx service"):
+            Utils.shell.chroot("systemctl enable nginx.service")
+
+        # To be somewhat faster using bash scripts for now.
+        # Install and launch ultimainsailos.sh
+        with Console("Install and launch ultimainsail.sh"):
+            Utils.install("/ultimainsailos.sh")
+            Utils.shell.chroot("bash /ultimainsailos.sh")
+
     @stamp
     @export(final=True)
     @prepare
