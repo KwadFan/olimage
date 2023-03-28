@@ -97,6 +97,7 @@ variants:
             - packagekit
             - wireless-tools
             - curl
+            - unzip
 
     full:
         packages:

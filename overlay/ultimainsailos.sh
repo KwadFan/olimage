@@ -75,10 +75,10 @@ sudo -u "${BASE_USER}" "${KLIPPER_PYTHON_DIR}"/bin/pip install -r "${KLIPPER_SRC
 ### Substep 3: Create klipper.env in printer_data/systemd
 echo "Create klipper.env file ..."
 KLIPPER_ENV_ARGS="${WORKDIR}/klipper/klippy/klippy.py"
-KLIPPER_ENV_ARGS+="${WORKDIR}/printer_data/config/printer.cfg"
-KLIPPER_ENV_ARGS+="-l ${WORKDIR}/printer_data/logs/klippy.log"
-KLIPPER_ENV_ARGS+="-I ${WORKDIR}/printer_data/comms/klippy.serial"
-KLIPPER_ENV_ARGS+="-a ${WORKDIR}/printer_data/comms/klippy.sock"
+KLIPPER_ENV_ARGS+=" ${WORKDIR}/printer_data/config/printer.cfg"
+KLIPPER_ENV_ARGS+=" -l ${WORKDIR}/printer_data/logs/klippy.log"
+KLIPPER_ENV_ARGS+=" -I ${WORKDIR}/printer_data/comms/klippy.serial"
+KLIPPER_ENV_ARGS+=" -a ${WORKDIR}/printer_data/comms/klippy.sock"
 
 echo "KLIPPER_ARGS=${KLIPPER_ENV_ARGS}" | sudo -u "${BASE_USER}" tee -a "${WORKDIR}/printer_data/systemd/klipper.env"
 echo "Create klipper.env file ... done!"
