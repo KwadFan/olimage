@@ -105,7 +105,7 @@ User=pi
 RemainAfterExit=yes
 WorkingDirectory=${WORKDIR}/klipper
 EnvironmentFile=${WORKDIR}/printer_data/systemd/klipper.env
-ExecStart=${WORKDIR}/klippy-env/bin/python $KLIPPER_ARGS
+ExecStart=${WORKDIR}/klippy-env/bin/python \$KLIPPER_ARGS
 Restart=always
 RestartSec=10
 
@@ -203,6 +203,9 @@ chmod 0755 "${WORKDIR}/printer_data/config/moonraker.conf"
 ### Substep 6: Leave monnraker dir
 popd &> /dev/null || exit 1
 ### END Substep 6
+### Substep 7: Ensure moonraker service is enabled
+sudo systemctl enable moonraker.service
+### END Substep 7
 echo "END Step 5"
 ## END Step 5
 
