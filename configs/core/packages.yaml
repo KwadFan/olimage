@@ -11,6 +11,7 @@ releases:
             - firmware-ralink
             - firmware-realtek
             - firmware-atheros
+            - firmware-ath9k-htc
         base:
             - git
             - avahi-daemon
