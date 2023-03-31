@@ -101,7 +101,7 @@ WantedBy=multi-user.target
 
 [Service]
 Type=simple
-User=pi
+User=${BASE_USER}
 RemainAfterExit=yes
 WorkingDirectory=${WORKDIR}/klipper
 EnvironmentFile=${WORKDIR}/printer_data/systemd/klipper.env
