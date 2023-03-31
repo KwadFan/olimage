@@ -49,7 +49,7 @@ jobs:
           WORKSPACE=$(echo ${{ github.workspace }})
           sudo chown -R $USER:$USER $WORKSPACE/ultimainsailos/output/a20-olinuxino-lime2/images || true
           sudo chmod 0775 -R $WORKSPACE/ultimainsailos/output/a20-olinuxino-lime2/images || true
-          cd ultimainsailos/output/a20-olinuxino/images
+          cd ultimainsailos/output/a20-olinuxino-lime2/images
           cp ultimainsailos-bullseye-A20*.img ultimainsailos-bullseye-A20-${NOW}.img
           CPU_COUNT="$(nproc)"
           echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
