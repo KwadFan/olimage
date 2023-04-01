@@ -1,7 +1,7 @@
 boards:
     # Define boards architecture
     arch: "armhf"
-    default: "A20-OLinuXino-LIME2"
+    default: "A20-OLinuXino-LIME2-G2"
 
     # Define load addresses
     loading:
